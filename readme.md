@@ -19,5 +19,14 @@ Step 4 - dotnet sln add Persistence<br>
 
 ## Adding dependencies within each project
 
-- cd {folder_name}
-- dotnet add reference ../Application
+- cd {folder_name}<br>
+- dotnet add reference ../Application<br>
+
+## Dotnet ef tool version
+
+-dotnet tool install --global dotnet-ef --version 5.0.1<br>
+-dotnet tool list --global<br>
+
+## migration cli
+
+dotnet ef migrations add InitialCreate -p Persistence/ -s API/<br>
