@@ -30,3 +30,7 @@ Step 4 - dotnet sln add Persistence<br>
 ## migration cli
 
 dotnet ef migrations add InitialCreate -p Persistence/ -s API/<br>
+
+## Creating React App
+
+-npx create-react-app client-app --use-npm --template typescript
