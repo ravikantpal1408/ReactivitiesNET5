@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, List } from 'semantic-ui-react';
 import { IActivity } from '../models/Activity';
@@ -9,7 +9,7 @@ function App() {
 
   useEffect(()=>{
     axios.get<IActivity[]>('http://localhost:5000/api/activities').then(res=>{
-      console.log(res.data);
+      // console.log(res.data);
       setActivities(res.data);
     });
   },[]);
