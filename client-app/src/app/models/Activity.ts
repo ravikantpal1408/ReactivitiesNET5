@@ -7,3 +7,5 @@ export interface IActivity {
     city: string;
     venue: string;
   }
+
+  
