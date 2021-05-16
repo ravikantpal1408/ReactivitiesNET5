@@ -26,18 +26,28 @@ function App() {
   }
 
   function handleOpenForm(id? : string ) {
-    id ? handleSelectActivity(id) : handleCancelSelectActivity()
+    id ? handleSelectActivity(id) : handleCancelSelectActivity();
+    setEditMode(true);
+  }
+
+  function handleFormClose() {
+    setEditMode(false);
   }
 
   return (
     <>
-      <NavBar/>
-      <Container style={{marginTop: '7em'}}>
+      <NavBar openForm={handleOpenForm}/>
+      <Container style = {{marginTop: '7em'}}>
         <ActivityDashboard 
-              activities={activities}
+              activities = {activities}
               selectedActivity = {selectedActivity}
               selectActivity = {handleSelectActivity}
-              cancelSelectActivity = {handleCancelSelectActivity} />
+              cancelSelectActivity = {handleCancelSelectActivity} 
+              editMode = {editMode}
+              openForm = {handleOpenForm}
+              closeForm = {handleFormClose}
+              
+              />
       </Container>   
     </>
   );

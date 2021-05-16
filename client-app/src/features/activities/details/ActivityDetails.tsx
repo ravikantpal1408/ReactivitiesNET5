@@ -1,14 +1,14 @@
-import { deflate } from "node:zlib";
 import React from "react";
-import { Button, Card, Icon, Image } from "semantic-ui-react";
+import { Button, Card, Image } from "semantic-ui-react";
 import { IActivity } from "../../../app/models/Activity";
 
 interface Props {
     activity: IActivity;
     cancelSelectActivity: () => void;
+    openForm: (id? : string) => void;
 }
 
-export default function ActivityDetails({ activity, cancelSelectActivity }: Props) {
+export default function ActivityDetails({ activity, cancelSelectActivity, openForm }: Props) {
     return (
 
         <Card>
@@ -24,8 +24,8 @@ export default function ActivityDetails({ activity, cancelSelectActivity }: Prop
             </Card.Content>
             <Card.Content extra>
                 <Button.Group widths='2'>
-                    <Button basic color='blue' content='Edit' />
-                    <Button basic color='grey' content='Cancel' />
+                    <Button basic color='blue' content='Edit' onClick={()=> openForm(activity.id)} />
+                    <Button onClick={cancelSelectActivity} basic color='grey' content='Cancel' />
                 </Button.Group>
             </Card.Content>
         </Card>
