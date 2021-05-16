@@ -8,6 +8,7 @@ import ActivityDashboard from '../../features/activities/dashboard/ActivityDashb
 function App() {
   const [activities, setActivities] = useState<IActivity[]>([]);
   const [selectedActivity, setSelectedActivity] = useState<IActivity | undefined>(undefined);
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(()=>{
     axios.get<IActivity[]>('http://localhost:5000/api/activities').then(res=>{
@@ -15,16 +16,18 @@ function App() {
       setActivities(res.data);
     });
   },[]);
-
   
-  function handleSelectedActivity(id: string) {
+  function handleSelectActivity(id: string) {
     setSelectedActivity(activities.find(x=>x.id === id));
   }
 
-  function cancelSelectActivity() {
+  function handleCancelSelectActivity() {
     setSelectedActivity(undefined);
   }
 
+  function handleOpenForm(id? : string ) {
+    id ? handleSelectActivity(id) : handleCancelSelectActivity()
+  }
 
   return (
     <>
@@ -33,8 +36,8 @@ function App() {
         <ActivityDashboard 
               activities={activities}
               selectedActivity = {selectedActivity}
-              selectActivity = {handleSelectedActivity}
-              cancelSelectActivity = {cancelSelectActivity} />
+              selectActivity = {handleSelectActivity}
+              cancelSelectActivity = {handleCancelSelectActivity} />
       </Container>   
     </>
   );
