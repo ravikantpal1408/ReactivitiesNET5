@@ -5,9 +5,10 @@ import { IActivity } from "../../../app/models/Activity";
 
 interface Props {
     activity: IActivity;
+    cancelSelectActivity: () => void;
 }
 
-export default function ActivityDetails({ activity }: Props) {
+export default function ActivityDetails({ activity, cancelSelectActivity }: Props) {
     return (
 
         <Card>
